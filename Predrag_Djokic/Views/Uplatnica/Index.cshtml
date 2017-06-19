@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Predrag_Djokic.Models.Uplatnica>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Iznos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatumPrometa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SvrhaUplate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Uplatilac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hitno)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iznos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DatumPrometa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SvrhaUplate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Uplatilac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hitno)
+        </td>
+        <td>
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.Id }) |
+
+            @Html.ActionLink("Obrisi", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
