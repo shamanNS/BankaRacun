@@ -4,15 +4,16 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Izmena racuna</h2>
+<h2>Izmena racuna za: @Model.NosilacRacuna</h2>
 
+<h4>Broj računa: @Model.BrojRacuna</h4>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Racun</h4>
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
@@ -55,7 +56,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Sačuvaj izmene" class="btn btn-default" />
             </div>
         </div>
     </div>

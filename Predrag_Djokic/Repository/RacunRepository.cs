@@ -103,7 +103,7 @@ namespace Predrag_Djokic.Repository
         public Racun GetById(int id)
         {
             LoadConnection();
-            string query = "SELECT * FROM RACUN;";
+            string query = "SELECT * FROM RACUN WHERE ID_RACUNA = @id;";
             DataTable dt = new DataTable(); // objekti u
             DataSet ds = new DataSet();     // koje smestam podatke
 
@@ -111,7 +111,7 @@ namespace Predrag_Djokic.Repository
             using (SqlCommand cmd = conn.CreateCommand())
             {
                 cmd.CommandText = query;
-
+                cmd.Parameters.AddWithValue("@Id", id);
                 SqlDataAdapter dadapter = new SqlDataAdapter();
                 dadapter.SelectCommand = cmd;
 

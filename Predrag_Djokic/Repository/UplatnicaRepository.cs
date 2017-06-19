@@ -100,7 +100,7 @@ namespace Predrag_Djokic.Repository
         public Uplatnica GetById(int id)
         {
             LoadConnection();
-            string query = "SELECT * FROM UPLATNICA u inner join RACUN r ON u.ID_RACUNA = r.ID_RACUNA;";
+            string query = "SELECT * FROM UPLATNICA u inner join RACUN r ON u.ID_RACUNA = r.ID_RACUNA WHERE ID_UPLATNICE = @id;";
             DataTable dt = new DataTable(); // objekti u
             DataSet ds = new DataSet();     // koje smestam podatke
 
@@ -111,6 +111,7 @@ namespace Predrag_Djokic.Repository
 
                 SqlDataAdapter dadapter = new SqlDataAdapter();
                 dadapter.SelectCommand = cmd;
+                cmd.Parameters.AddWithValue("@id", id);
 
                 // Fill(...) metoda je bitna, jer se prilikom poziva te metode izvrsava upit nad bazom podataka
                 dadapter.Fill(ds, "Uplatnice"); // naziv tabele u dataset-u

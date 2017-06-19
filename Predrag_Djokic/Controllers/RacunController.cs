@@ -19,6 +19,17 @@ namespace Predrag_Djokic.Controllers
             return View(racuni);
 
         }
+
+        //ToggleStatus
+        public ActionResult ToggleStatus(int id)
+        {
+            var racun = racunRepo.GetById(id);
+            racun.Aktivan = !racun.Aktivan;
+            racunRepo.Update(racun);
+
+            return RedirectToAction("Index");
+        }
+
         //rad sa Racunima (= otvori link)
 
         public ActionResult Details(int id)
